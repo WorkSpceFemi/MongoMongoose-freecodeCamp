@@ -14,16 +14,17 @@ var personSchema=new schema({
 
 Person=mongoose.model('Person',personSchema);
 
-let me=new Person({
-  name:"Femimi",
-  age:17,
-  favoriteFoods:["stfgv","ergd","erfgfb"]
-});
+let me=new Person({name:"Femimi",age:17,favoriteFoods:["stfgv","ergd","erfgfb"]});
 
 
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  var janeFonda = new Person({name: "Jane Fonda", age: 84, favoriteFoods: ["eggs", "fish", "fresh fruit"]});
+  janeFonda.save(function(err, data) {
+    if (err) return console.error(err);
+    done(null, data);
+  });
+  
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
